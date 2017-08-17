@@ -1,0 +1,89 @@
+<div class="container-fluid" ng-init="Init()">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8 text-center">
+							Consulta Cotação
+						</div>
+						<div class="col-md-2 text-right">
+							<button type="button"
+									ng-click="Init()"
+									class="btn btn-primary">
+								<i class="glyphicon glyphicon-refresh"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-md-12" ng-if="currencies.length">
+							<select class="form-control"
+									ng-model="currency"
+									ng-change="GetValueCurrency(currency)"
+									ng-options="currency as currency.coin for currency in currencies">
+							</select>
+						</div>
+						<div class="col-md-12 text-center" ng-if="!currencies.length">
+							<img src="/images/loading.gif" width="200px" height="145px" />
+						</div>
+					</div>
+
+					<div class="row" ng-if="currency">
+						<div class="col-md-6">
+							<h2>
+								Cod. Moeda:
+								<small>{{ currency.code_coin }}</small>
+							</h2>
+							<h2>
+								Moeda:
+								<small>{{ currency.coin }}</small>
+							</h2>
+							<h2>
+								Taxa de Compra (R$):
+								<small>{{ currency.purchase_rate }}</small>
+							</h2>
+							<h2>
+								Taxa de Venda (R$):
+								<small>{{ currency.sales_charge }}</small>
+							</h2>
+							<h2>
+								Paridade de Compra (R$):
+								<small>{{ currency.purchase_parity }}</small>
+							</h2>
+							<h2>
+								Paridade de Venda (R$):
+								<small>{{ currency.sales_parity }}</small>
+							</h2>
+						</div>
+						<div class="col-md-6">
+							<h2>
+								Paises:
+							</h2>
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th>Cod. País</th>
+										<th>Nome</th>
+										<th>Nome Moeda</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="country in currency.countries">
+										<Td>{{ country.code_country }}</Td>
+										<Td>{{ country.country }}</Td>
+										<Td>{{ country.name }}</Td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>

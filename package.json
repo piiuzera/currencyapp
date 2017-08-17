@@ -1,0 +1,32 @@
+{
+  "name": "currency-bcb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Server.js",
+  "scripts": {
+    "test": "node Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/piiuzera/currency-bcb.git"
+  },
+  "author": "Matheus Amaro (matheus.amaro@gmail.com)",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/piiuzera/currency-bcb#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "request": "^2.81.0",
+    "run-sequence": "^2.1.0"
+  }
+}

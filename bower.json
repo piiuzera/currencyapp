@@ -1,0 +1,24 @@
+{
+  "name": "currency-bcb",
+  "description": "",
+  "main": "Server.js",
+  "authors": [
+    "Matheus Amaro (matheus.amaro@gmail.com)"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "toastr": "^2.1.3",
+    "ngstorage": "^0.3.11"
+  }
+}

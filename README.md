@@ -2,7 +2,7 @@
 ## Development by Matheus Amaro
 ---
 
-## Visit this page on the web: http://currencyapp.amarocorp.com.br
+#### Visit this page on the web: http://currencyapp.amarocorp.com.br
 
 ## Initializing
 

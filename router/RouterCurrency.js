@@ -18,22 +18,22 @@ var Fork 	 = require('../crawl/Fork');
 			hash 		: hash
 		});
 
-		var currency = {};
-		currency.request_hash = hash;
-		currency.currencies = [];
+		var req = {};
+		req.request_hash = hash;
+		req.currencies = [];
 
-		Fork.GetListCurrency().Enqueue(currency);
+		Fork.GetListRequest().Enqueue(req);
 	});
 
-	var _setCurrency = function(_currency) {
+	var _setRequest = function(_request) {
 		var response = {};
 		for (var i = 0; i < Requests.length; ++i) {
-			if (Requests[i].hash === _currency.request_hash) {
+			if (Requests[i].hash === _request.request_hash) {
 				response = Requests[i].response;
 			}
 		}
 
-		if (!_currency) {
+		if (!_request) {
 			response.status(401).json({
 				request : false,
 				date 	: new Date(),
@@ -44,9 +44,9 @@ var Fork 	 = require('../crawl/Fork');
 		}
 
 		response.status(200).json({
-			request  : true,
-			date 	 : new Date(),
-			currency : _currency.currencies
+			request  	: true,
+			date 	 	: new Date(),
+			currencies 	: _request.currencies
 		});
 	};
 
@@ -54,6 +54,6 @@ var Fork 	 = require('../crawl/Fork');
 		return Router;
 	};
 
-	module.exports.SetCurrency 	= _setCurrency;
+	module.exports.SetRequest 	= _setRequest;
 	module.exports.GetRouter 	= _getRouter;
 })();

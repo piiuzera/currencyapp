@@ -4,22 +4,22 @@ var Cluster	= require('cluster');
 var Log 	= require('./fork/Log');
 
 (function() {
-	var ListCurrency  = [];
-    var Workers       = [];
-    var ScaleLoop     = {};
-    var ScaleLoopMs   = 100;
+	var ListRequest  = [];
+    var Workers      = [];
+    var ScaleLoop    = {};
+    var ScaleLoopMs  = 100;
 
     var SetScale = function() {
         var workersId 	= Object.keys(Workers);
         var threads 	= 10;
-        var resolution	= ListCurrency.length / threads;
+        var resolution	= ListRequest.length / threads;
         var newThreads	= 0;
 
         if (threads > workersId.length) {
             newThreads = threads - workersId.length;
 
             if (resolution < 1) {
-                newThreads = ListCurrency.length - workersId.length;
+                newThreads = ListRequest.length - workersId.length;
             }
 
             StartWorkers(newThreads);
@@ -35,21 +35,21 @@ var Log 	= require('./fork/Log');
         }
     };
 
-    var _getListCurrency = function() {
-        var _enqueue = function(_currency) {
-            if (!_currency || !_currency.request_hash || !_currency.currencies) {
+    var _getListRequest = function() {
+        var _enqueue = function(_request) {
+            if (!_request || !_request.request_hash || !_request.currencies) {
                 return;
             }
 
-            ListCurrency.unshift(_currency);
+            ListRequest.unshift(_request);
         };
 
         var _dequeue = function() {
-            if (ListCurrency.length === 0) {
+            if (ListRequest.length === 0) {
                 return null;
             }
 
-            return ListCurrency.pop();
+            return ListRequest.pop();
         };
 
         return {
@@ -71,6 +71,6 @@ var Log 	= require('./fork/Log');
         );
 	};
 
-	module.exports.GetListCurrency     = _getListCurrency;
-	module.exports.Init 			   = _init;
+	module.exports.GetListRequest  = _getListRequest;
+	module.exports.Init 		   = _init;
 })();

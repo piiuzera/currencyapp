@@ -11,17 +11,17 @@ var RouterCurrency	= require('./router/RouterCurrency');
 			return;
 		}
 
-		if (message.command === 'GetCurrency') {
-			var currency = Fork.GetListCurrency().Dequeue();
+		if (message.command === 'GetRequest') {
+			var request = Fork.GetListRequest().Dequeue();
 
 			worker.send({
-				command: 'SetCurrency',
+				command: 'SetRequest',
 				data: {
-					currency: currency ? currency : null
+					request: request ? request : null
 				}
 			});
-		} else if (message.command === 'SetCurrency') {
-			RouterCurrency.SetCurrency(message.data.currency);
+		} else if (message.command === 'SetRequest') {
+			RouterCurrency.SetRequest(message.data.request);
 		}
 	};
 

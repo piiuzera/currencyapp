@@ -19,7 +19,7 @@ angular.module('CurrencyApp')
 					return;
 				}
 
-				$scope.currencies = body.currency;
+				$scope.currencies = body.currencies;
 			};
 
 			var _init = function() {
